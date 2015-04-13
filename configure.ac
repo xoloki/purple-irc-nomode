@@ -127,8 +127,6 @@ echo Build purple plugins.............: $HAVE_PURPLE
 if test x"$HAVE_PURPLE" = x"yes" ; then
 	echo Installing purple plugins to.....: `eval eval echo $PURPLE_LIBDIR`
 	echo Installing purple plugin data to.: `eval eval echo $PURPLE_DATADIR`
-	echo Purple plugins to be built.......:
-	eval $PP_PURPLE_BUILD
 fi
 echo;
 
