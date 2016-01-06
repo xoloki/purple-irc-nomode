@@ -57,15 +57,22 @@ AM_CONDITIONAL(HAVE_PURPLE, true)
 DEPENDENCIES="$DEPENDENCIES,purple"
 
 if test x"$prefix" = x"NONE" ; then
-	PURPLE_LIBDIR=`pkg-config --variable=libdir purple`
-	PURPLE_DATADIR=`pkg-config --variable=datadir purple`
+    PURPLE_LIBDIR=`pkg-config --variable=libdir purple`
+    PURPLE_DATADIR=`pkg-config --variable=datadir purple`
 else
 	PURPLE_LIBDIR="$libdir"
 	PURPLE_DATADIR="$datadir"
 fi
 
 if test x"$PURPLE_LIBDIR" != x"" ; then
-	PURPLE_LIBDIR="$PURPLE_LIBDIR/purple-2"
+    PURPLE_LIBDIR="$PURPLE_LIBDIR/purple-2"
+fi
+
+AC_ARG_ENABLE(per-user-plugins, [  --enable-per-user-plugins          install to the ~/.purple/plugins],enable_per_user_plugins=yes,enable_per_user_plugins=no)
+
+if test "x$enable_per_user_plugins" = "xyes" ; then
+    PURPLE_LIBDIR="$HOME/.purple/plugins"
+    PURPLE_DATADIR="$PURPLE_LIBDIR"
 fi
 
 AC_SUBST(PURPLE_CFLAGS)
