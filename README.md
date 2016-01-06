@@ -6,4 +6,4 @@ autoreconf -i && ./configure && make && sudo make install
 
 To install to the per-user plugin directory:
 
-./configure --enable-per-user-plugins
+./configure --enable-per-user-plugins && make install
